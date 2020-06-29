@@ -88,6 +88,12 @@ RUN wget https://dl.influxdata.com/chronograf/releases/chronograf_${CHRONOGRAF_V
 RUN wget https://dl.grafana.com/oss/release/grafana_${GRAFANA_VERSION}_amd64.deb && \
 	dpkg -i grafana_${GRAFANA_VERSION}_amd64.deb && rm grafana_${GRAFANA_VERSION}_amd64.deb
 
+# Clone Check_MK plugin repo and move to plugins folder
+
+RUN git clone https://github.com/tribe29/grafana-checkmk-datasource.git && \
+	mkdir /var/lib/grafana/plugins/dist/checkmk-datasource
+	mv grafana-checkmk-datasource /var/lib/grafana/plugins/dist/checkmk-datasource
+	
 # Configure Grafana with provisioning
 ADD grafana/provisioning /etc/grafana/provisioning
 ADD grafana/dashboards /var/lib/grafana/dashboards
