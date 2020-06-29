@@ -92,7 +92,7 @@ RUN wget https://dl.grafana.com/oss/release/grafana_${GRAFANA_VERSION}_amd64.deb
 
 RUN git clone https://github.com/tribe29/grafana-checkmk-datasource.git && \
 	mkdir /var/lib/grafana/plugins/dist/checkmk-datasource && \
-	mv grafana-checkmk-datasource /var/lib/grafana/plugins/dist/checkmk-datasource
+	mv grafana-checkmk-datasource /var/lib/grafana/plugins/dist/
 	
 # Configure Grafana with provisioning
 ADD grafana/provisioning /etc/grafana/provisioning
