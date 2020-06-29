@@ -91,8 +91,7 @@ RUN wget https://dl.grafana.com/oss/release/grafana_${GRAFANA_VERSION}_amd64.deb
 # Clone Check_MK plugin repo and move to plugins folder
 
 RUN git clone https://github.com/tribe29/grafana-checkmk-datasource.git
-RUN mkdir /var/lib/grafana/plugins/dist/checkmk-datasource
-RUN mv grafana-checkmk-datasource /var/lib/grafana/plugins/dist/
+ADD grafana-checkmk-datasource/dist /var/lib/grafana/plugins/check_mk
 	
 # Configure Grafana with provisioning
 ADD grafana/provisioning /etc/grafana/provisioning
